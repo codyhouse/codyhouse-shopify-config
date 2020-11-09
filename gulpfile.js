@@ -8,6 +8,7 @@ var calc = require('postcss-calc');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var purgecss = require('gulp-purgecss');
 
 // js file paths
 var utilJsPath = 'node_modules/codyhouse-framework/main/assets/js';
@@ -48,3 +49,15 @@ gulp.task('watch', gulp.series(['sass', 'scripts'], function () {
   gulp.watch(scssFilesPath, gulp.series(['sass']));
   gulp.watch(componentsJsPath, gulp.series(['scripts']));
 }));
+
+/* Gulp purgeCSS task */
+gulp.task('purgeCSS', function(){
+  gulp.src(cssFolder+'/style.css.liquid')
+  .pipe(purgecss({
+    // 👇 include all shopify directories
+    content: ['templates/*.liquid', 'layout/*.liquid', scriptsJsPath+'/scripts.min.js'],
+    safelist: ['.is-hidden', '.is-visible'],
+    defaultExtractor: content => content.match(/[\w-/:%@]+(?<!:)/g) || []
+  }))
+  .pipe(gulp.dest(cssFolder));
+});
