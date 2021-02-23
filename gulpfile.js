@@ -7,6 +7,7 @@ var cssvariables = require('postcss-css-variables');
 var calc = require('postcss-calc');  
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var replace = require('gulp-replace');
 var uglify = require('gulp-uglify');
 var purgecss = require('gulp-purgecss');
 

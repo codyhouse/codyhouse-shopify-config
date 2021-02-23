@@ -1,6 +1,6 @@
 {
   "name": "codyframe-shopify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CodyFrame Shopify",
   "keywords": [
     "shopify",
@@ -24,6 +24,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-purgecss": "^3.0.0",
     "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.1.0",
     "gulp-uglify": "^3.0.2",
