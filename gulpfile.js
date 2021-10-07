@@ -50,7 +50,11 @@ gulp.task('purgeCSS', function(){
   .pipe(purgecss({
     // 👇 include all shopify directories
     content: ['templates/*.liquid', 'layout/*.liquid', scriptsJsPath+'/scripts.min.js'],
-    safelist: ['.is-hidden', '.is-visible'],
+    safelist: {
+      standard: ['.is-hidden', '.is-visible'],
+      deep: [/class$/],
+      greedy: []
+    },
     defaultExtractor: content => content.match(/[\w-/:%@]+(?<!:)/g) || []
   }))
   .pipe(gulp.dest(cssFolder));
